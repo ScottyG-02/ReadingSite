@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nexus — Scott Garsson</title>
+
+  <style>
+    :root{
+      --bg: #fbfbfc;
+      --ink: #15171a;
+      --muted: rgba(21,23,26,.68);
+      --panel: rgba(255,255,255,.78);
+      --border: rgba(21,23,26,.10);
+      --shadow: 0 18px 40px rgba(0,0,0,.06);
+      --accent: #2f62ff;
+      --max: 820px;
+      --r: 18px;
+    }
+
+    *{ box-sizing: border-box; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(47,98,255,.08), transparent 55%),
+        var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .back{
+      display:inline-block;
+      margin-bottom: 30px;
+      font-size: 14px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .back:hover{
+      color: var(--ink);
+    }
+
+    .card{
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    h1{
+      margin: 0 0 6px;
+      font-size: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    .author{
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .rating{
+      margin-bottom: 24px;
+      font-size: 16px;
+    }
+
+    .stars{
+      color: var(--accent);
+      letter-spacing: 2px;
+      font-size: 18px;
+    }
+
+    .review{
+      font-size: 16px;
+      color: rgba(21,23,26,.9);
+    }
+
+    footer{
+      margin-top: 40px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <a href="Homepage.html" class="back">← Back to shelf</a>
+
+    <div class="card">
+      <h1>Nexus: A Brief History of Information Networks from the Stone Age to AI</h1>
+      <div class="author">Yuval Noah Harari</div>
+
+      <div class="rating">
+        My Rating:
+        <span class="stars">★★★★★</span>
+        (5/5)
+      </div>
+
+      <div class="review">
+        <p><em>The following is AI generated using ChatGPT-5.2</em></p>
+
+<p>In <em>Nexus (2024)</em>, I explore the most consequential question of our age: what happens when intelligence becomes detached from consciousness? For millennia, power belonged to those who controlled the great information networks—myths, bureaucracies, religions, nations. Today, however, we are building something unprecedented: non-human agents capable of generating language, strategy, art, and authority at scale. These systems do not merely transmit information; they shape it, curate it, and increasingly decide upon it. The nexus—the connecting tissue of society—is no longer exclusively human. As artificial intelligence weaves itself into governments, markets, and intimate relationships, it quietly redefines what it means to make decisions, to hold responsibility, and to wield power.</p>
+
+<p>The book argues that humanity has entered a new phase of history in which information is no longer a passive record of reality but an active force that constructs reality. Algorithms already recommend what we read, diagnose our illnesses, guide our weapons, and influence our elections. Yet we remain psychologically unprepared for the authority we are delegating. In previous revolutions—the printing press, the telegraph, the internet—information technologies amplified human voices. This time, they may replace them. If we fail to understand how these networks operate, we risk surrendering democratic oversight to opaque systems optimized not for truth or wisdom, but for engagement, efficiency, or profit.</p>
+
+<p>You should read this book not because it offers easy optimism or dystopian fear, but because it provides historical clarity at a moment when clarity is rare. The decisions being made in the next few years—by engineers, policymakers, executives, and citizens—will shape the architecture of human civilization for generations. We cannot afford technological naivety. To navigate the age of artificial intelligence, we must understand how information networks have governed humanity in the past and how they may govern us in the future. The window for shaping this transformation is narrow. The future will not wait for our comprehension.</p>
+     
+      </div>
+    </div>
+
+    <footer>
+      © <span id="year"></span> Scott Garsson
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
