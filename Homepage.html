@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scott Garsson — Reading</title>
+  <meta name="description" content="A small shelf of books I recommend — covers first." />
+
+  <style>
+    :root{
+      --bg: #fbfbfc;
+      --ink: #15171a;
+      --muted: rgba(21,23,26,.68);
+      --panel: rgba(255,255,255,.78);
+      --border: rgba(21,23,26,.10);
+      --shadow: 0 18px 40px rgba(0,0,0,.06);
+      --accent: #2f62ff; /* clean, non-UT */
+      --max: 1040px;
+      --r: 18px;
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height: 100%; }
+
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(47,98,255,.08), transparent 55%),
+        radial-gradient(900px 700px at 80% 20%, rgba(0,0,0,.05), transparent 60%),
+        var(--bg);
+      line-height: 1.45;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+
+    /* Header */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap: 10px;
+      white-space: nowrap;
+    }
+    .brand .name{
+      font-weight: 650;
+      letter-spacing: -0.01em;
+    }
+    .brand .tag{
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,.65);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.05);
+      font-size: 14px;
+      color: rgba(21,23,26,.88);
+    }
+    .btn:hover{
+      text-decoration: none;
+      border-color: rgba(47,98,255,.25);
+    }
+    .btn .dot{
+      width: 8px; height: 8px; border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(47,98,255,.12);
+    }
+
+    /* Shared card */
+    .card{
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 16px;
+      align-items:start;
+      margin-bottom: 22px;
+    }
+    @media (max-width: 860px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+
+    .left-col{
+      display:flex;
+      flex-direction:column;
+      gap: 16px;
+    }
+
+    .intro p{
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+    }
+    .intro .fine{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* About (now inside hero left column) */
+    .about h2{
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      color: rgba(21,23,26,.82);
+    }
+    .about p{
+      margin: 0;
+      color: rgba(21,23,26,.86);
+      font-size: 15px;
+    }
+    .meta-links{
+      margin-top: 12px;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Portrait */
+    .portrait{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+    .portrait .frame{
+      border: 1px solid rgba(21,23,26,.10);
+      border-radius: calc(var(--r) + 8px);
+      padding: 10px;
+      background: rgba(255,255,255,.65);
+    }
+    .portrait img{
+      width: 100%;
+      height: auto;
+      border-radius: calc(var(--r) + 2px);
+      display:block;
+      object-fit: cover;
+      filter: saturate(.96) contrast(.98);
+    }
+    .portrait .caption{
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    /* Pills */
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(21,23,26,.12);
+      background: rgba(255,255,255,.6);
+      font-size: 13px;
+      color: rgba(21,23,26,.86);
+    }
+    .pill:hover{
+      text-decoration: none;
+      border-color: rgba(47,98,255,.25);
+    }
+
+    /* Shelf */
+    .section-title{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap: 12px;
+      margin: 18px 0 12px;
+    }
+    .section-title h2{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      color: rgba(21,23,26,.82);
+    }
+    .section-title .hint{
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 860px){ .grid{ grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 520px){ .grid{ grid-template-columns: 1fr;} }
+
+    .book{
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      background: rgba(255,255,255,.70);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 24px rgba(0,0,0,.05);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height: 340px;
+      transition: transform 140ms ease, border-color 140ms ease;
+    }
+    .book:focus-within{
+      border-color: rgba(47,98,255,.35);
+      transform: translateY(-2px);
+    }
+
+    .cover{
+      aspect-ratio: 3 / 4;
+      background: linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,0));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px;
+    }
+    .cover img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 18px 35px rgba(0,0,0,.18);
+      background: #fff;
+    }
+
+    .book-body{
+      padding: 14px 14px 16px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .title{
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0;
+      line-height: 1.2;
+    }
+    .author{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .book-links{
+      margin-top: auto;
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    footer{
+      margin-top: 44px;
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .kbd-hint{
+      border: 1px solid rgba(21,23,26,.12);
+      border-radius: 10px;
+      padding: 6px 10px;
+      background: rgba(255,255,255,.55);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand" aria-label="Site identity">
+        <div class="name">Scott Garsson</div>
+        <div class="tag">Reading shelf</div>
+      </div>
+
+      <nav class="cta" aria-label="Primary">
+        <a class="btn" href="https://www.linkedin.com/in/scott-garsson/" target="_blank" rel="noopener noreferrer">
+          <span class="dot" aria-hidden="true"></span>
+          Connect
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Intro">
+        <!-- LEFT COLUMN: intro + about (fills the previous empty space) -->
+        <div class="left-col">
+          <div class="card intro">
+            <p>
+		Modern literacy is no longer about can read or cannot read. If you are in a first or second world country, most, if not everyone you know can read. The modern issue is what you choose to read. Do you choose to read books that uplift your intellect? Or distract you from the important issues of the day, or that which has the potential to better your being. This page is dedicated to books I love that have changed the way I think, and can potentially change the way you think.            
+
+
+            </p>
+                    </div>
+
+          <section class="card about" aria-label="About">
+            <h2>About</h2>
+            <p>
+		My name is Scott. I am an Austin resident born and raised. I attended the University of Texas at Austin and graduated with a degree in Finance in 2025. Currently I work as a software product manager for a startup in the precision oncology space. My specific product line is a personal cancer journey support mobile application. I live to learn.</p>
+
+            <div class="meta-links" aria-label="About links">
+              <a class="pill" href="https://www.linkedin.com/in/scott-garsson/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </section>
+        </div>
+
+        <!-- RIGHT COLUMN: portrait -->
+        <aside class="card portrait" aria-label="Portrait">
+          <div class="frame">
+            <!-- Put your image file next to index.html as "me.jpg" OR change this path -->
+            <img src="scott.jpg" alt="Portrait of Scott Garsson"/>
+          </div>
+          <div class="caption">
+            A flattering way a co-worker described me once: "Thinker, Learner, Doer". Motto aside, I try to live up to that reputation daily. 
+          </div>
+        </aside>
+      </section>
+
+      <div class="section-title">
+        <h2>My Reading List</h2>
+      </div>
+
+      <section class="grid" aria-label="Book shelf" id="shelf">
+        <!-- Example book card (swap content) -->
+        <article class="book" tabindex="-1">
+          <div class="cover">
+            <img
+              src="Nexus.jpg"
+              alt="Book cover: Nexus by Yuval Harari"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="book-body">
+            <h3 class="title">Nexus: A Brief History of Information Networks from the Stone Age to AI</h3>
+            <p class="author">Yuval Noah Harari</p>
+
+            <div class="book-links" aria-label="Book links">
+              <a class="pill" href="https://a.co/d/0gscQi1J" target="_blank" rel="noopener noreferrer">Amazon</a>
+              <a class="pill" href="https://www.goodreads.com/book/show/204927599-nexus?ac=1&from_search=true&qid=d1lm2VDELL&rank=1" target="_blank" rel="noopener noreferrer">Goodreads</a>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Scott Garsson</div>
+      <div class="kbd-hint">Tip: <strong>Tab</strong> to focus links</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+   </script>
+</body>
+</html>
