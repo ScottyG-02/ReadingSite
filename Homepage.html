@@ -7,7 +7,7 @@
   <meta name="description" content="A small shelf of books I recommend — covers first." />
 
   <style>
-    :root{
+    :root{ 
       --bg: #fbfbfc;
       --ink: #15171a;
       --muted: rgba(21,23,26,.68);
@@ -126,13 +126,8 @@
       font-size: 18px;
       letter-spacing: -0.01em;
     }
-    .intro .fine{
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 14px;
-    }
 
-    /* About (now inside hero left column) */
+    /* About */
     .about h2{
       margin: 0 0 10px;
       font-size: 16px;
@@ -189,6 +184,8 @@
       background: rgba(255,255,255,.6);
       font-size: 13px;
       color: rgba(21,23,26,.86);
+      position: relative;
+      z-index: 2; /* keep above card overlay */
     }
     .pill:hover{
       text-decoration: none;
@@ -210,20 +207,18 @@
       text-transform: uppercase;
       color: rgba(21,23,26,.82);
     }
-    .section-title .hint{
-      color: var(--muted);
-      font-size: 13px;
-    }
 
     .grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
+      justify-items: start; /* guarantees left-justified grid items */
     }
     @media (max-width: 860px){ .grid{ grid-template-columns: repeat(2, 1fr);} }
     @media (max-width: 520px){ .grid{ grid-template-columns: 1fr;} }
 
     .book{
+      width: 100%;              /* fill its grid cell */
       border: 1px solid var(--border);
       border-radius: var(--r);
       background: rgba(255,255,255,.70);
@@ -234,10 +229,27 @@
       flex-direction:column;
       min-height: 340px;
       transition: transform 140ms ease, border-color 140ms ease;
+      position: relative;       /* for overlay link */
+    }
+    .book:hover{
+      border-color: rgba(47,98,255,.35);
+      transform: translateY(-2px);
     }
     .book:focus-within{
       border-color: rgba(47,98,255,.35);
       transform: translateY(-2px);
+    }
+
+    /* Overlay link that opens the book page */
+    .book-open{
+      position: absolute;
+      inset: 0;
+      border-radius: var(--r);
+      z-index: 1;
+    }
+    .book-open:focus{
+      outline: 2px solid rgba(47,98,255,.35);
+      outline-offset: 2px;
     }
 
     .cover{
@@ -263,6 +275,8 @@
       flex-direction:column;
       gap: 10px;
       flex: 1;
+      position: relative;
+      z-index: 2; /* keep text/links above overlay */
     }
 
     .title{
@@ -311,44 +325,43 @@
       </div>
 
       <nav class="cta" aria-label="Primary">
-        <a class="btn" href="https://www.linkedin.com/in/scott-garsson/" target="_blank" rel="noopener noreferrer">
-          <span class="dot" aria-hidden="true"></span>
-          Connect
-        </a>
       </nav>
     </header>
 
     <main>
       <section class="hero" aria-label="Intro">
-        <!-- LEFT COLUMN: intro + about (fills the previous empty space) -->
         <div class="left-col">
           <div class="card intro">
             <p>
-		Modern literacy is no longer about can read or cannot read. If you are in a first or second world country, most, if not everyone you know can read. The modern issue is what you choose to read. Do you choose to read books that uplift your intellect? Or distract you from the important issues of the day, or that which has the potential to better your being. This page is dedicated to books I love that have changed the way I think, and can potentially change the way you think.            
-
-
+              Modern literacy is no longer about can read or cannot read. If you are in a first or second world country,
+              most, if not everyone you know can read. The modern issue is what you choose to read. Do you choose to read
+              books that uplift your intellect? Or distract you from the important issues of the day, or that which has the
+              potential to better your being. This page is dedicated to books I love that have changed the way I think, and
+              can potentially change the way you think.
             </p>
-                    </div>
+          </div>
 
           <section class="card about" aria-label="About">
             <h2>About</h2>
             <p>
-		My name is Scott. I am an Austin resident born and raised. I attended the University of Texas at Austin and graduated with a degree in Finance in 2025. Currently I work as a software product manager for a startup in the precision oncology space. My specific product line is a personal cancer journey support mobile application. I live to learn.</p>
+              My name is Scott. I am an Austin resident born and raised. I attended the University of Texas at Austin and
+              graduated with a degree in Finance in 2025. Currently I work as a software product manager for a startup in
+              the precision oncology space. My specific product line is a personal cancer journey support mobile application.
+              I live to learn.
+            </p>
 
-            <div class="meta-links" aria-label="About links">
-              <a class="pill" href="https://www.linkedin.com/in/scott-garsson/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <div class="meta-links" aria-label="About links"> 
+              <a class="pill" href="https://www.linkedin.com/in/scott-garsson/" target="_blank" rel="noopener noreferrer">Connect</a>
             </div>
           </section>
         </div>
 
-        <!-- RIGHT COLUMN: portrait -->
         <aside class="card portrait" aria-label="Portrait">
           <div class="frame">
-            <!-- Put your image file next to index.html as "me.jpg" OR change this path -->
             <img src="scott.jpg" alt="Portrait of Scott Garsson"/>
           </div>
           <div class="caption">
-            A flattering way a co-worker described me once: "Thinker, Learner, Doer". Motto aside, I try to live up to that reputation daily. 
+            A flattering way a co-worker described me once: "Thinker, Learner, Do-er". Motto aside, I try to live up to that reputation daily.
           </div>
         </aside>
       </section>
@@ -358,8 +371,11 @@
       </div>
 
       <section class="grid" aria-label="Book shelf" id="shelf">
-        <!-- Example book card (swap content) -->
-        <article class="book" tabindex="-1">
+
+        <article class="book">
+          <!-- This is the click target to open your dedicated book page -->
+	<a class="book-open" href="Nexus.html" aria-label="Open review page for Nexus"></a>
+
           <div class="cover">
             <img
               src="Nexus.jpg"
@@ -375,9 +391,11 @@
             <div class="book-links" aria-label="Book links">
               <a class="pill" href="https://a.co/d/0gscQi1J" target="_blank" rel="noopener noreferrer">Amazon</a>
               <a class="pill" href="https://www.goodreads.com/book/show/204927599-nexus?ac=1&from_search=true&qid=d1lm2VDELL&rank=1" target="_blank" rel="noopener noreferrer">Goodreads</a>
+              <a class="pill" href="Nexus.html">Harari's words (AI) →</a>
             </div>
           </div>
         </article>
+
       </section>
     </main>
 
@@ -389,7 +407,6 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
-
-   </script>
+  </script>
 </body>
 </html>
